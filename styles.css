@@ -1,0 +1,107 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	line-height: 25px;
+	background: black;
+	background-image: url(images/body_background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+	background-color: black;
+	background-image: url(images/parallax_bg.png);
+	background-repeat:  no-repeat;
+	background-size:  cover;
+	height: 100%;
+	width: 100%;
+	min-height: 100vh;
+	text-align: center;
+	line-height: 100vh;
+	font-size: x-large;
+}
+
+#container{
+	color: white;
+	width: 70%;
+	margin: 0px auto;
+}
+
+#listTitle{
+	font-size: x-large;
+	text-decoration-line: underline;
+	text-decoration-color:  lightgray;
+}
+
+.clearfix{
+	padding-top: 10px;
+	clear: both;
+}
+
+.article{
+	padding-bottom: 20px;
+	color: white;
+}
+
+#content{
+	float: left;
+	width: calc(77% - 20px);
+	min-height: 500px;
+	padding: 10px;
+}
+
+aside{
+	color: black;
+	line-height: 25px;
+	float:  left;
+	width: calc(23% - 40px);
+	min-height: 500px;
+	padding: 10px;
+	padding-left: 30px;
+	padding-top: 15px;
+	background:  darkorange;
+	/*background-image: url(images/background_aside2.png);*/
+}
+
+aside li {
+	color: deepskyblue;
+}
+
+
+aside li:hover>a {
+	color: black;
+	background: lightgray;
+}
+
+#asideTitle{
+	font-size: x-large;
+}
+
+footer{
+	padding-top: 10px;
+	padding-bottom: 15px;
+	color: black;
+	font-size: large;
+	background-color: darkorange;
+}
+
+.list{
+	color: lightcyan;
+	float: left;
+	padding-left: 20px;
+}
+
+#clickingimages{
+	background: orange;
+	border: 3px solid white;
+	padding: 3px;
+}
+
+#contact{
+	color: blue;
+}
