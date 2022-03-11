@@ -35,7 +35,7 @@ header{
 
 nav{
 	width: 60%;
-	background-color: rgba(74, 67, 53, 0.5);
+	background-color: rgba(128, 116, 94, 0.5);
 	border-radius: 25px;
 }
 
@@ -257,12 +257,31 @@ a:hover{
 	color: rgb(127,180,184);
 }
 
+@media (max-width: 900px){
 
-@media only screen and (max-width: 960px){
-		
-		body, h1, h2, h3, h4, p{
+	body, h1, h2, h3, h4, p{
 			font-size: 10px;
 			overflow: hidden;
 		}
+	  .slider{
+	    width: 100%;
+	  }
 
-	} 
+	  .slider .slide .info{
+	    position: relative;
+	    width: 80%;
+	    margin-left: auto;
+	    margin-right: auto;
+	  }
+}
+
+@media (max-width: 500px){
+	  .slider .slide .info h2{
+	    font-size: 1.8em;
+	    line-height: 40px;
+	  }
+
+	  .slider .slide .info p{
+	    font-size: 0.9em;
+	  }
+}
