@@ -10,6 +10,7 @@
 	margin-right: auto;
 	padding: 10px;
 	text-align: center;
+	border-radius: 25px;
 }
 
 body{
@@ -21,10 +22,7 @@ body{
 }
  
 header{
-	background-color: black;
-	height: 100%;
-	width: 100%;
-	min-height: 100vh;
+	min-height: 200px;
 	text-align: center;
 	line-height: 100vh;
 	font-size: 50px;
@@ -60,13 +58,13 @@ nav{
 aside{
 	color: black;
 	line-height: 25px;
-	float:  left;
-	width: calc(23% - 40px);
+	float:  right;
+	width: 20%;
 	min-height: 500px;
 	padding: 10px;
 	padding-left: 30px;
 	padding-top: 15px;
-	background:  darkorange;
+	background:  rgb(191,157,61);
 }
 
 aside li {
@@ -76,27 +74,32 @@ aside li {
 
 aside li:hover>a {
 	color: black;
-	background: lightgray;
+	background: rgb(127,180,184);
 }
 
 #asideTitle{
-	font-size: x-large;
+	font-family: Syne Mono;
+	color: rgb(240,240,240);
+	text-decoration: underline;
+	font-size: 40px;
 }
 
 footer{
 	color: black;
-	font-size: large;
-	background-color: darkorange;
+	font-size: 50px;
+	background-color: rgb(191,157,61);
 }
 
 #clickingimages{
-	background: orange;
+	background: rgb(191,157,61);
 	border: 3px solid white;
 	padding: 3px;
+	border-radius: 10px;
+	align-items: center;
 }
 
 #contact{
-	color: blue;
+	color: black;
 }
 
 .inBlock{
