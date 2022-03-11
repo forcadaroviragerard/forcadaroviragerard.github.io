@@ -72,6 +72,13 @@ aside li {
 	color: deepskyblue;
 }
 
+img{
+	background-color: rgb(191,157,61);
+	border-radius: 15px;
+	border: 3px solid white;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
 
 aside li:hover>a {
 	border-radius: 10px;
@@ -343,6 +350,9 @@ button{
   background: #4285F4;
 }
 	
+a:hover{
+	color: rgb(127,180,184,0.6);
+}
 
 @media (max-width: 900px){
 

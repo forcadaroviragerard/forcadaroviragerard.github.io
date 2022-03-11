@@ -254,7 +254,7 @@ img{
 }
 
 a:hover{
-	color: rgb(127,180,184);
+	color: rgb(127,180,184,0.6);
 }
 
 @media (max-width: 900px){
