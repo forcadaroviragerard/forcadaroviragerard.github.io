@@ -238,6 +238,7 @@ a{
 li a{
 	color: white;
 	font-size: 20px;
+	border: 0px;
 }
 #active{
 	background-color: rgb(191,157,61);
