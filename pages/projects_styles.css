@@ -4,13 +4,29 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
-  	font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 	color: white;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 10px;
 	text-align: center;
 	border-radius: 25px;
+}
+
+.main{
+	grid-area: main;
+}
+.right{
+	grid-area: m-rigth;
+	background-color: rgb(191,157,61);
+}
+
+.grid-container {
+  display: grid;
+  grid-template:
+    'main main main m-rigth'
+    'main main main m-rigth';
+  grid-gap: 5px;
 }
 
 body{
@@ -50,6 +66,7 @@ nav{
 }
 
 #content{
+	display: grid;
 	float: left;
 	width: calc(77% - 20px);
 	min-height: 500px;
@@ -118,6 +135,12 @@ footer{
 	border-radius: 15px;
 	max-width: calc(70% - 50px);
 	max-height: calc(70% - 50px);
+}
+
+.innerBlock{
+	border: 4px solid rgb(191,157,61);
+	border-radius: 15px;
+	margin: 30px;
 }
 
 #colorOrange{
@@ -207,7 +230,15 @@ p{
 	color: rgb(201, 183, 135);
 	font-size: 20px;
 }
-
+a{
+	font-family: Roboto;
+	color: rgb(201, 183, 135);
+	font-size: 20px;
+}
+li a{
+	color: white;
+	font-size: 20px;
+}
 #active{
 	background-color: rgb(191,157,61);
 	color: white;
@@ -253,8 +284,8 @@ button{
 
 .slider .slide{
 	position: absolute;
-	width: 100%;
-	height: 100%;
+	width: auto;
+	height: auto;
 	clip-path: circle(0% at 0 50%);
 }
 
@@ -382,3 +413,4 @@ a:hover{
 	    font-size: 0.9em;
 	  }
 }
+
