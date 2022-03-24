@@ -27,6 +27,7 @@
     'main main main m-rigth'
     'main main main m-rigth';
   grid-gap: 5px;
+  padding: 0px;
 }
 
 body{
@@ -97,7 +98,7 @@ img{
 	margin-top: 10px;
 }
 
-aside li:hover>a {
+.right ul li:hover>a {
 	border-radius: 10px;
 	color: black;
 	background: rgba(127,180,184,0.5);
