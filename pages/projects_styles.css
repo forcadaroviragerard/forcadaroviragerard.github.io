@@ -135,7 +135,7 @@ footer{
 	border: 4px solid rgb(191,157,61);
 	border-radius: 15px;
 	max-width: calc(70% - 50px);
-	max-height: calc(70% - 50px);
+	
 }
 
 .innerBlock{
@@ -403,6 +403,11 @@ a:hover{
 	    margin-left: auto;
 	    margin-right: auto;
 	  }
+	  img{
+	  	width: auto;
+	  	height: auto;
+	  }
+	}
 }
 
 @media (max-width: 500px){
@@ -413,6 +418,10 @@ a:hover{
 
 	  .slider .slide .info p{
 	    font-size: 0.9em;
+	  }
+	  img{
+	  	width: auto;
+	  	height: auto;
 	  }
 }
 
