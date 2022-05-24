@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+	color: white;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	font-family: Roboto, arial, sans-serif;
+	border-radius: 25px;
+}
+body{
+	background-color: black;
+	background-image: url("../img/bg.jpg");
+	background-size: 20vh 20vh;
+}
+
+p {
+	font-family: Roboto;
+	font-size: 22px;
+	text-decoration: none;
+	color: white;
+}
+
+#title{
+	text-align: center;
+	font-family: Syne Mono;
+	font-size: 50px;
+	text-transform: uppercase;
+	text-shadow: #FFF 0 -1px 2px, #ff0 0 -1px 5px, #ff8000 0 -5px 10px, blue 0 -9px 20px;
+}
+
+.block{
+	background-color: rgba(191,157,61,.5);
+	display: flex;
+	align-self: center;
+	flex-wrap: wrap; no-wrap
+	justify-content: space-between;
+	align-self: center;
+	width: 80%;
+	height: 80%;
+	border: 3px double rgb(191,157,61);
+}
+
+#buttonBack{
+	z-index: 1;
+	position: fixed; 
+	right: 20px; 
+	top:20px;
+	border-radius: 15px;
+	background-color: rgba(127,180,184,1);
+	width: 100px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+}
+#buttonBack:hover{
+	background-color: rgba(191,157,61,1);
+	color: black;
+}
+
+.contact-form{
+	max-width: 40%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.contact-info, .contact-form{
+	flex: 1;
+}
+
+.contact-form .text-box{
+	background: #000;
+	color: #fff;
+	border: none;
+	width: 100%;
+	height: 50px;
+	padding: 12px;
+	font-size: 15px;
+	border-radius: 5px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+	margin-bottom: 20px;
+	opacity: 1;
+
+}
+
+.contact-form .text-box:first-child{
+	margin-right: 15px;
+}
+
+.contact-form textarea{
+	background: #000;
+	color: #fff;
+	border: none;
+	width: 100%;
+	padding: 12px;
+	font-size: 15px;
+	min-height: 200px;
+	max-height: 400px;
+	resize: vertical;
+	border-radius: 5px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+	margin-bottom: 20px;
+	opacity: 1;
+}
+
+.contact-form .send-btn{
+	float: right;
+	background-color: rgb(191,157,61);
+	color: #fff;
+	border: none;
+	width: 120px;
+	height: 40px;
+	font-size: 15px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.3s;
+	transition-property: background;
+	color: white;
+}
+
+.contact-form .send-btn:hover{
+	background-color: rgb(127,180,184);
+	color: black;
+}
+
+@media screen and (max-width: 950px){
+	.contact-info, .contact-form{
+		margin: 30px 50px;
+	}
+	.contact-form .text-box{
+		width: 100%;
+	}
+
+}

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animacio nom - Gerard Forcada</title>
+	<link rel="stylesheet" href="../../styles.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Syne Mono|Pacifico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<script type="text/javascript" src="../js/processing.js"></script>
+</head>
+<body>
+	<div id="title"><p>Els meus jocs</p></div>
+	<a href="../jocs.html"><div id="buttonBack">BACK</div></a>
+	<div class="block">
+		<h2>Aquí tenim una animacio</h2>
+		<div class="gameRef">
+      <p>En aquesta part tenim el prototip i el resultat en grup del joc de PONG.</p>
+      <p>En el treball resultant vam treballar <a href="https://unaiestavillo.com/">L'Unai Estivillo</a>, en <a href="https://nailscat.github.io/">Nil Torrentó</a> i jo mateix</p>
+      <p>Per motiu de llibreries encara no he pogut pujar el joc final per això deixo aquí unes imatges:</p>
+      <img src="./res/animacioNom.png" width="400px" style="margin-left:20vw;">
+		
+		<div>
+			<script type="text/processing">
+        //Zona de variables
+String gameManager = "MENU";
+
+//--------------------Game menu
+color menu_background = color(1,58,99);
+PVector play_btn = new PVector(70,150);
+PVector play_btn_size = new PVector(200,80);
+color play_btn_color = color(97,165,194);
+color play_btn_color_base = color(97,165,194);
+color play_btn_color_high = color(137,194,217);
+
+PVector opt_btn = new PVector(330,150);
+PVector opt_btn_size = new PVector(200,80);
+color opt_btn_color = color(97,165,194);
+color opt_btn_color_base = color(97,165,194);
+color opt_btn_color_high = color(137,194,217);
+
+//--------------------OPTS
+color opts_background = color(0, 180, 216);
+color opts_text_col = color(13, 71, 161);
+PVector menu_btn = new PVector(230,300);
+PVector menu_btn_size = new PVector(150,60);
+color menu_btn_color = color(144, 224, 239);
+color menu_btn_color_base = color(144, 224, 239);
+color menu_btn_color_high = color(173, 232, 244);
+int color_select = 0;
+float rect_size = 70;
+PVector sel_red_pos = new PVector(150,150);
+color sel_red = color(157, 2, 8);
+color sel_red_stroke = color(0);
+PVector sel_green_pos = new PVector(400,150);
+color sel_green = color(64, 145, 108);
+color sel_green_stroke = color(255);
+
+//--------------------INGAME
+//--background and score ingame
+color background_color[] = {color(8,28,21),color(55, 6, 23)};
+float top_board = 50;
+color top_color[] = {color(116,198,157),color(157, 2, 8)};
+color top_text_col = color(255);
+//--player-1
+PVector player_1_position = new PVector(50,150);
+color player_1_color[] = {color(216,243,220),color(220, 47, 2)};
+int player_1_score = 0;
+//--player-2
+PVector player_2_position = new PVector(550,150);
+color player_2_color[] = {color(216,243,220),color(220, 47, 2)};
+int player_2_score = 0;
+//--player-generic
+PVector player_paddle = new PVector(20,100);
+float player_speed = 5;
+//--ball
+PVector ball_position = new PVector(300,200);
+PVector ball_initial_position = new PVector(300,200);
+float ball_rad = 20;
+PVector ball_speed;
+color ball_color[] = {color(183,228,199),color(255, 186, 8)};
+float ball_base_speed = 3; 
+//--game refresh time
+float dt = 0.33;
+//--Timer
+color timer_col = color(255);
+int rest_time = 120;
+int base_time = 120;
+int last_sec;
+
+
+void setup()
+{
+  ball_speed = generate_random_dir_2D(ball_base_speed);
+  size(600,400);
+  last_sec = int(second());
+}
+
+void draw()
+{
+  if(gameManager=="MENU")
+  {
+    background(menu_background);
+    noStroke();
+    fill(play_btn_color);
+    rect(play_btn.x,play_btn.y,play_btn_size.x,play_btn_size.y,30);
+    fill(255);
+    textSize(48);
+    text("PLAY",play_btn.x+42,play_btn.y+55);
+    fill(opt_btn_color);
+    rect(opt_btn.x,opt_btn.y,opt_btn_size.x,opt_btn_size.y,30);
+    fill(255);
+    textSize(48);
+    text("OPTS",opt_btn.x+42,opt_btn.y+55);
+  }
+  
+  if(gameManager=="OPTS")
+  {
+    background(opts_background);
+    noStroke();
+    fill(menu_btn_color);
+    rect(menu_btn.x,menu_btn.y,menu_btn_size.x,menu_btn_size.y,30);
+    fill(opts_text_col);
+    textSize(32);
+    text("MENU",menu_btn.x+27,menu_btn.y+40);
+    
+    stroke(sel_red_stroke);
+    strokeWeight(5);
+    fill(sel_red);
+    rect(sel_red_pos.x,sel_red_pos.y,rect_size,rect_size,30);
+    stroke(sel_green_stroke);
+    fill(sel_green);
+    rect(sel_green_pos.x,sel_green_pos.y,rect_size,rect_size,30);
+  }
+  
+  if(gameManager == "GAME")
+  {
+    //Timer
+    if(last_sec!=int(second()))
+    {
+      last_sec=int(second());
+      rest_time--;
+    }
+    //Player-ball collision
+    if(collision_player1_ellipse(player_1_position.x, player_1_position.y,player_paddle.x, player_paddle.y, ball_position.x, ball_position.y, ball_rad) || collision_player2_ellipse(player_2_position.x, player_2_position.y, player_paddle.y, ball_position.x, ball_position.y, ball_rad))
+    {
+      ball_speed.x = -ball_speed.x;
+    }
+    if(ball_position.y<top_board+(ball_rad/2) || ball_position.y>400-(ball_rad/2))
+    {
+      ball_speed.y = -ball_speed.y;
+    }
+    //ball world collision
+    if(ball_position.x<=0)
+    {
+     player_2_score++; 
+     ball_position = ball_initial_position;
+     ball_speed = generate_random_dir_predef(ball_base_speed,true);
+    }
+    if(ball_position.x>=width)
+    {
+      player_1_score++;
+      ball_position = ball_initial_position;
+      ball_speed = generate_random_dir_predef(ball_base_speed,false);  
+    }
+    //ball movement formula
+    ball_position.x += ball_speed.x * dt;
+    ball_position.y += ball_speed.y * dt;
+    
+    background(background_color[color_select]);
+    noStroke();
+    fill(top_color[color_select]);
+    rect(0,0,600,top_board);
+    fill(top_text_col);
+    textSize(24);
+    text("Player 1: "+player_1_score, 20, 35);
+    text("Player 2: "+player_2_score, 450, 35);
+    fill(timer_col);
+    text("Time: "+ int(rest_time/60) + ":"+int(rest_time%60),220,35);
+    
+    fill(player_1_color[color_select]);
+    rect(player_1_position.x, player_1_position.y,player_paddle.x, player_paddle.y);
+    
+    fill(player_2_color[color_select]);
+    rect(player_2_position.x, player_2_position.y,player_paddle.x, player_paddle.y);
+     
+    fill(ball_color[color_select]);
+    ellipse(ball_position.x, ball_position.y, ball_rad, ball_rad);
+  }
+
+}
+
+void keyPressed()
+{
+  //Player 1 W-S
+  if((key == 'W' || key == 'w') && player_1_position.y>55)
+  {
+    player_1_position.y-=player_speed;
+  }
+  if((key == 'S' || key == 's') && player_1_position.y<345)
+  {
+    player_1_position.y+=player_speed;
+  }
+  //Player 2 VK_UP - VK_DOWN
+  if(keyCode == UP && player_2_position.y>55)
+  {
+     player_2_position.y-=player_speed;
+  }
+    if(keyCode == DOWN && player_2_position.y<345)
+  {
+    player_2_position.y+=player_speed;
+  }
+}
+
+void mouseMoved()
+{
+  if(gameManager=="MENU")
+  {
+    if(play_btn.x<mouseX && mouseX<(play_btn.x+play_btn_size.x) && play_btn.y<mouseY && mouseY<(play_btn.y+play_btn_size.y))
+    {
+      play_btn_color = play_btn_color_high;
+    }
+    else
+    {
+       play_btn_color = play_btn_color_base;
+    }
+    if(opt_btn.x<mouseX && mouseX<(opt_btn.x+opt_btn_size.x) && opt_btn.y<mouseY && mouseY<(opt_btn.y+opt_btn_size.y))
+    {
+      opt_btn_color = opt_btn_color_high;
+    }
+    else
+    {
+       opt_btn_color = opt_btn_color_base;
+    }
+  }
+  if(gameManager=="OPTS")
+  {
+    if(menu_btn.x<mouseX && mouseX<(menu_btn.x+menu_btn_size.x) && menu_btn.y<mouseY && mouseY<(menu_btn.y+menu_btn_size.y))
+    {
+      menu_btn_color = menu_btn_color_high;
+    }
+    else
+    {
+       menu_btn_color = menu_btn_color_base;
+    }
+  }
+}
+
+void mousePressed()
+{
+  if(gameManager=="MENU")
+  {
+    if(play_btn.x<mouseX && mouseX<(play_btn.x+play_btn_size.x) && play_btn.y<mouseY && mouseY<(play_btn.y+play_btn_size.y))
+    {
+      gameManager="GAME";
+    }
+    if(opt_btn.x<mouseX && mouseX<(opt_btn.x+opt_btn_size.x) && opt_btn.y<mouseY && mouseY<(opt_btn.y+opt_btn_size.y))
+    {
+      gameManager="OPTS";
+    }
+  }
+  if(gameManager=="OPTS")
+  {
+    if(menu_btn.x<mouseX && mouseX<(menu_btn.x+menu_btn_size.x) && menu_btn.y<mouseY && mouseY<(menu_btn.y+menu_btn_size.y))
+    {
+      gameManager="MENU";
+    }
+    if(sel_red_pos.x<mouseX && mouseX<(sel_red_pos.x+rect_size) && sel_red_pos.y<mouseY && mouseY<(sel_red_pos.y+rect_size))
+    {
+      sel_red_stroke = color(0);//activat
+      sel_green_stroke = color(255);
+      color_select=1;
+    }
+    if(sel_green_pos.x<mouseX && mouseX<(sel_green_pos.x+rect_size) && sel_green_pos.y<mouseY && mouseY<(sel_green_pos.y+rect_size))
+    {
+      sel_red_stroke = color(255);
+      sel_green_stroke = color(0);//activat
+      color_select=0;
+    }
+  }
+}
+
+boolean collision_player1_ellipse(float rx, float ry, float rw, float rh, float ex, float ey, float er)
+{
+  if( ((rx+rw)>(ex-er/2) && rx<(ex-er)) && ( ry<ey && ey<(ry+rh)) )
+  {
+   return true; 
+  }
+  return false;
+}
+
+boolean collision_player2_ellipse(float rx, float ry, float rh, float ex, float ey, float er)
+{
+  if( (rx<(ex+er/2) && rx>(ex-er)) && ( ry<ey && ey<(ry+rh)) )
+  {
+   return true; 
+  }
+  return false;
+}
+
+PVector generate_random_dir_2D(float base)
+{
+  int dir_X = int(random(2));
+  int dir_Y = int(random(2));
+  PVector ret = new PVector(0,0);
+  if(dir_X == 0)
+  {
+    if(dir_Y == 0)
+    {
+    ret = new PVector(-base,base);
+    }
+    else
+    {
+      ret = new PVector(-base,-base);
+    }
+  }
+  else
+  {
+    if(dir_Y == 0)
+    {
+    ret = new PVector(base,base);
+    }
+    else
+    {
+      ret = new PVector(base,-base);
+    }
+  }
+  return ret;
+}
+
+PVector generate_random_dir_predef(float base, boolean dir)
+{
+  //dir true player1  / dir false player2
+  int dir_Y = int(random(2));
+  PVector ret = new PVector(0,0);
+  if(dir)
+  {
+    if(dir_Y == 0)
+    {
+    ret = new PVector(-base,base);
+    }
+    else
+    {
+      ret = new PVector(-base,-base);
+    }   
+  }
+  else
+  {
+    if(dir_Y == 0)
+    {
+    ret = new PVector(base,base);
+    }
+    else
+    {
+      ret = new PVector(base,-base);
+    }
+  }
+  return ret;
+}
+      </script>
+			<canvas id="sketch" style="border:3px solid white;"></canvas>
+		</div>
+  </div>
+</div>
+</body>
+</html>

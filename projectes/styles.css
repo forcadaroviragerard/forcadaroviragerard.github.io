@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+	color: white;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	font-family: Roboto, arial, sans-serif;
+}
+
+body{
+	background: black;
+}
+
+.pimg1, .pimg2, .pimg3, .pimg4{
+	position:relative;
+	opacity:0.70;
+	background-position:center;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+}
+
+.pimg1{
+	background-image:url('./ref/cuina/rendercuina.png');
+	min-height:100vh;
+}
+
+.pimg2{
+	background-image:url('./ref/habitacio/renderhabitacio.png');
+	min-height:100vh;
+}
+
+.pimg3{
+	background-image:url('./ref/AK/ak47.png');
+	min-height:100vh;
+}
+
+.pimg4{
+	background-image:url('./ref/dibuixos/casc.jpg');
+	min-height:100vh;
+}
+
+.ptext{
+	font-family: Roboto;
+	position:absolute;
+	top:50%;
+	width:100%;
+	text-align:center;
+	color:black;
+	font-size:27px;
+	letter-spacing:8px;
+	text-transform:uppercase;
+}
+
+.ptext .border{
+	font-family: Roboto;
+	background-color:rgb(127,180,184,.7);
+	color:white;
+	padding:20px;
+	border-radius: 25px;
+}
+
+.ptext .border.trans{
+	background-color:transparent;
+}
+
+.section{
+	text-align:center;
+	padding:50px 80px;
+}
+
+.section-gold{
+	background-color:rgb(191,157,61,0.7);
+	color:black;
+}
+
+.parallaxText{
+	width: 80%;
+	font-size:22px;
+}
+
+#buttonBack{
+	z-index: 1;
+	position: fixed; 
+	right: 20px; 
+	top:20px;
+	border-radius: 15px;
+	background-color: rgba(127,180,184,1);
+	width: 100px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+}
+#buttonBack:hover{
+	background-color: rgba(191,157,61,1);
+	color: black;
+}
+
+.buttonMore{
+	background-color: rgba(127,180,184,0);
+	align-items: center;
+	text-align: center;
+	line-height: 0px;
+	transition-duration: .8s;
+	width: 400px;
+	height: 50px;
+	border-radius: 25px;
+}
+.buttonMore:hover{
+	background-color: rgb(191,157,61);
+}
