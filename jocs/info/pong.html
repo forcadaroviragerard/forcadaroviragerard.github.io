@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Animacio nom - Gerard Forcada</title>
+	<title>Pong - Gerard Forcada</title>
 	<link rel="stylesheet" href="../../styles.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Syne Mono|Pacifico">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -17,10 +17,23 @@
 		<div class="gameRef">
       <p>En aquesta part tenim el prototip i el resultat en grup del joc de PONG.</p>
       <p>En el treball resultant vam treballar <a href="https://unaiestavillo.com/">L'Unai Estivillo</a>, en <a href="https://nailscat.github.io/">Nil Torrentó</a> i jo mateix</p>
-      <p>Per motiu de llibreries encara no he pogut pujar el joc final per això deixo aquí unes imatges:</p>
-      <img src="./res/animacioNom.png" width="400px" style="margin-left:20vw;">
-		
+      <p>Per motiu de llibreries encara no he pogut pujar el joc final per això deixo fotos d'aquest:</p>
+      <div>
+        <p>Versió final:</p>
+        <img src="../res/pong.png">
+        <p>Nivell del bosc</p>
+        <img src="../res/pongForest.png">
+        <p>Nivell del mar</p>
+        <img src="../res/pongSea.png">
+        <p>Nivell de la Unió</p>
+        <img src="../res/pongUnion.png">
+        <p>Tot el joc conte animacións i sons especifics per a cada nivell, cada un d'aquests nivells té el seus fragments d'historia i finals segons el guanyador.</p>
+        <p>També vam programar una IA senzilla per a fer un mode 1 jugador.</p>
+        <p>Els elements visuals són tots propis.</p>
+      </div>
+		<hr>
 		<div>
+      <p>Versió prototip:</p>
 			<script type="text/processing">
         //Zona de variables
 String gameManager = "MENU";
@@ -79,7 +92,7 @@ PVector ball_initial_position = new PVector(300,200);
 float ball_rad = 20;
 PVector ball_speed;
 color ball_color[] = {color(183,228,199),color(255, 186, 8)};
-float ball_base_speed = 3; 
+float ball_base_speed = 5; 
 //--game refresh time
 float dt = 0.33;
 //--Timer
