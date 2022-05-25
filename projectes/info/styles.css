@@ -48,7 +48,18 @@ body{
 
 .block p{
 	width: 60%;
+}
 
+.displayProps{
+	border: 3px double rgb(191,157,61);
+	border-radius: 25px;
+	width: 80%;
+	height: 80%;
+	background-color: rgba(255, 255, 255, .3);
+	padding-bottom: 30px;
+	padding-top: 30px;
+	font-size: 28px;
+	text-decoration: underline;
 }
 
 .slider{

@@ -12,7 +12,7 @@ body{
 	background: black;
 }
 
-.pimg1, .pimg2, .pimg3, .pimg4{
+.pimgFDCuina, .pimgFDHabitacio, .pimgAK47, .pimgDibuixos, .pimgProps, .pimgEnProces{
 	position:relative;
 	opacity:0.70;
 	background-position:center;
@@ -21,23 +21,33 @@ body{
 	background-attachment:fixed;
 }
 
-.pimg1{
+.pimgFDCuina{
 	background-image:url('./ref/cuina/rendercuina.png');
 	min-height:100vh;
 }
 
-.pimg2{
+.pimgFDHabitacio{
 	background-image:url('./ref/habitacio/renderhabitacio.png');
 	min-height:100vh;
 }
 
-.pimg3{
+.pimgAK47{
 	background-image:url('./ref/AK/ak47.png');
 	min-height:100vh;
 }
 
-.pimg4{
+.pimgDibuixos{
 	background-image:url('./ref/dibuixos/casc.jpg');
+	min-height:100vh;
+}
+
+.pimgProps{
+	background-image:url('./ref/Props/ArcanistBook/render1.png');
+	min-height:100vh;
+}
+
+.pimgEnProces{
+	background-image:url('./ref/EnProces/Casa01/Casa01_front.png');
 	min-height:100vh;
 }
 
