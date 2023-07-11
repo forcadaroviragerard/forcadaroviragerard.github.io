@@ -59,6 +59,13 @@ body{
 	width: 60%;
 }
 
+.block img{
+	width: 60vw;
+}
+
+
+
+
 .displayProps{
 	border: 3px double rgb(191,157,61);
 	border-radius: 25px;
