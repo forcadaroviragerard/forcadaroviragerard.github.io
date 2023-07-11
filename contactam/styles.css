@@ -21,6 +21,15 @@ p {
 	color: white;
 }
 
+h4 {
+	font-family: Roboto;
+	font-size: 18px;
+	text-decoration: underline;
+	color: white;
+	margin: 0px;
+	margin-bottom: 10px;
+}
+
 #title{
 	text-align: center;
 	font-family: Syne Mono;
@@ -36,7 +45,7 @@ p {
 	flex-wrap: wrap; no-wrap
 	justify-content: space-between;
 	align-self: center;
-	width: 80%;
+	width: 50%;
 	height: 80%;
 	border: 3px double rgb(191,157,61);
 }
@@ -59,7 +68,7 @@ p {
 }
 
 .contact-form{
-	max-width: 40%;
+	max-width: 80%;
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 20px;
