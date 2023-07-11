@@ -63,7 +63,6 @@ p {
 }
 
 .block a{
-	text-transform: uppercase;
 	text-decoration: none;
 }
 
@@ -140,7 +139,7 @@ li{
 }
 
 .gameRef{
-	background-color: rgba(191,157,61,.5);
+	background-color: rgba(0,0,0,.3);
 	border: 2px solid rgb(191,157,61);
 	font-size: 18px;
 	width: 80%;
@@ -153,16 +152,3 @@ li{
 	color: rgb(127,180,184);
 }
 
-.buttonMore{
-	background-color: rgba(127,180,184,0);
-	align-items: center;
-	text-align: center;
-	line-height: 0px;
-	transition-duration: .8s;
-	width: 400px;
-	height: 50px;
-	border-radius: 25px;
-}
-.buttonMore:hover{
-	background-color: rgb(191,157,61);
-}

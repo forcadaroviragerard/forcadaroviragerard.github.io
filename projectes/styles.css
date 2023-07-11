@@ -7,13 +7,25 @@
 	padding: 5px;
 	font-family: Roboto, arial, sans-serif;
 }
-
+ 
 body{
 	background: black;
 }
 
 a{
 	text-decoration: none;
+}
+
+.navig{
+	height: 40px;
+	position: fixed;
+	text-align: center;
+	top: 20px;
+	z-index: 9999;
+}
+
+.navig a{
+	text-decoration: underline;
 }
 
 .pimgPud, .pimgTFG, .pimgPaC, .pimgDibuixos, .pimgProps, .pimgEnProces, .pimgProg{
